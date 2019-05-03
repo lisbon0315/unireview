@@ -1,19 +1,19 @@
-class LessonsController < ApplicationController
+class ReviewsController < ApplicationController
   before_action :require_login, only: %i[new create edit update]
-
+  
   def index
-    @lessons = Lesson.all
+    @reviews = Review.all
   end
 
   def new
-    @lesson = Lesson.new
+    @review = Review.new
   end
 
   def create
-    @lesson = current_user.new(lesson_params)
+    @review = current_user.new(review_params)
 
-    if @lesson.save
-      redirect_to lessons_path, success: '投稿に成功しました'
+    if @review.save
+      redirect_to reviews_path, success: '投稿に成功しました'
     else
       flash.now[danger] = "投稿に失敗しました"
       render :new
@@ -21,8 +21,8 @@ class LessonsController < ApplicationController
   end
 
   private
-  def lesson_params
-    params.require(:lesson).permit(:name, :professor_name, :department)
+  def review_params
+    params.require(:review).permit(:content, :star)
   end
 
   def require_login
