@@ -3,6 +3,6 @@ class UniversitiesController < ApplicationController
   end
 
   def index
-    @niversities = University.all
+    @universities = University.all
   end
 end

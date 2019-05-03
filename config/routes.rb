@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'lessons/new'
   get 'universities/new'
   root 'pages#index'
   get 'pages/help'
@@ -10,4 +11,5 @@ Rails.application.routes.draw do
 
   resources :users
   resources :universities
+  resources :lessons
 end
