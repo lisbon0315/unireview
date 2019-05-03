@@ -1,4 +1,6 @@
 class LessonsController < ApplicationController
+  before_action :require_login, only: %i[new create edit update]
+
   def index
     @lessons = Lesson.all
   end
@@ -21,5 +23,12 @@ class LessonsController < ApplicationController
   private
   def lesson_params
     params.require(:lesson).permit(:name, :professor_name)
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:error] = "ログインしてください"
+      redirect_to new
+    end
   end
 end
