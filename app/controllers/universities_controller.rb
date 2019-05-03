@@ -1,8 +1,7 @@
 class UniversitiesController < ApplicationController
-  def new
-  end
+  PER = 20
 
   def index
-    @universities = University.all
+    @universities = University.page(params[:page]).per(PER)
   end
 end
