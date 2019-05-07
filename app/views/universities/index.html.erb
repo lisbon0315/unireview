@@ -1,0 +1,19 @@
+<div class="universities-index-wrapper">
+  <div class="container">
+    <% @universities.each do |university| %>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="university-index-single">
+            <h2 class="university-name">
+              <%= link_to lessons_path(university_id: university.id) do %>
+                <%= university.name %>
+              <% end %>
+            </h2>
+            <%= image_tag university.image.url %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <%= paginate @universities %>
+  </div>
+</div>
