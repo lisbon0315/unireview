@@ -4,16 +4,16 @@
       <div class="col-md-6 col-md-offset-3">
         <h1 class="text-center">レビュー</h1>
         <%= form_for @review do |f| %>
+          <div class="field" id="star">
+            <%= f.label :star %>
+            <%= f.hidden_field :star, id: :review_star %>
+          </div>
           <div class="form-group">
             <%= f.label :content %>
             <%= f.text_area :content, class: 'form-control' %>
           </div>
-          <div class="field" id="star">
-            <%= f.label :star, class: "review_star" %>
-          </div>
-
           <%= link_to new_review_path(lesson_id: lesson.id) do %>
-            <div class="btn btn-primary">投稿</div>
+            <div class="btn btn-primary">レビュー投稿</div>
           <% end %>
         <% end %>
 
