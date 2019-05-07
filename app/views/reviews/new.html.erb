@@ -1,0 +1,31 @@
+<div class="reviews-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h1 class="text-center">レビュー</h1>
+        <%= form_for @review do |f| %>
+          <div class="form-group">
+            <%= f.label :content %>
+            <%= f.text_area :content, class: 'form-control' %>
+          </div>
+          <div class="field" id="star">
+            <%= f.label :star, class: "review_star" %>
+          </div>
+
+          <%= link_to new_review_path(lesson_id: lesson.id) do %>
+            <div class="btn btn-primary">投稿</div>
+          <% end %>
+        <% end %>
+
+        <script>
+          $('#star').raty({
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            scoreName: 'review[star]'
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+</div>

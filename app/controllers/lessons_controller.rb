@@ -26,7 +26,7 @@ class LessonsController < ApplicationController
   def lesson_params
     params.require(:lesson).permit(:name, :professor_name, :department, :university_id)
   end
-
+  
   def require_login
     unless logged_in?
       flash[:error] = "ログインしてください"
