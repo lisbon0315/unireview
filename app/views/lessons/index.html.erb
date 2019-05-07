@@ -1,0 +1,22 @@
+<div class="lessons-index-wrapper">
+  <div class="container">
+    <% @lessons.each do |lesson| %>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="lesson-index-single">
+            <h2 class="lesson-name">
+              <%= link_to reviews_path(lesson_id: lesson.id) do %>
+                <%= lesson.name %>
+              <% end %>
+            </h2>
+            <h3 class="professor-name">
+              <%= lesson.professor_name %>
+              <%= lesson.department %>
+            </h3>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <%= paginate @lessons %>
+  </div>
+</div>
